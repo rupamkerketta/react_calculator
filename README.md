@@ -1,3 +1,7 @@
+# Quick Demo
+
+Go Here : https://rupamkerketta.github.io/ReactCalculator/
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
