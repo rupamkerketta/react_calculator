@@ -194,7 +194,7 @@ class Buttons extends Component{
 class MetaAuthor extends Component{
   render(){
     return(
-      <div className="metaAuthor">Author: Rupam Rudolf Kerketta</div>
+      <div className="metaAuthor">Author: Rupam Kerketta</div>
     );
   }
 }
