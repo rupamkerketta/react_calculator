@@ -1,4 +1,4 @@
-#Quick Demo
+# Quick Demo
 
 Go Here : https://rupamkerketta.github.io/ReactCalculator/
 
