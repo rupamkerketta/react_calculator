@@ -2,7 +2,7 @@
 
 Go Here : https://rupamkerketta.github.io/react_calculator/
 
-![alt text] (https://raw.githubusercontent.com/rupamkerketta/react_calculator/src/demo-pic.png)
+![alt text] (https://raw.githubusercontent.com/rupamkerketta/react_calculator/master/src/demo-pic.png)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
