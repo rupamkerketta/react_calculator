@@ -13,10 +13,11 @@
   text-align: right;
   padding:3px 10px;
   height: 98px;
-  border-radius: 3px;
+  /* border-radius: 3px; */
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   box-shadow: 0 3px 1px #CAC5C6;
+  /* border-bottom: 1px solid #D6D5D5; */
   }
 
 .output-text{
@@ -35,10 +36,12 @@
 }
 
 .Buttons{
-  margin-top: 5px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 5px;
+  background-color: #191717;
+  /* grid-gap: 5px; */
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
 }
 
 
@@ -46,59 +49,70 @@
   font-size: 2rem;
   border: 0 solid #777;
   text-align: center;
-  padding: 1rem;
-  background-color: #D6D5D5;
-  color: #312F2F;
+  /* background-color: #D6D5D5; */
+  /* color: #312F2F; */
+  color: #F4EEEE;
   font-weight: bold;
   cursor: pointer;
-  border-radius: 3px;
-  box-shadow: 0 3px 1px #CAC5C6;
+  /* border-radius: 3px; */
+  /* box-shadow: 0 3px 1px #CAC5C6; */
+  transition: transformY ease 1s;
 }
 
 .btn-0, .btn-1{
-  background-color: #FDE315;
-}
-
-.btn:hover{
-  background-color: #757575;
-  color: #FFF;
-}
-
-.btn-0:hover, .btn-1:hover{
-  background-color: #312F2F;
+  /* background-color: #FDE315; */
+  /* background-color: #FD1B47; */
+  /* background-color: #1F1D1D; */
+  background-color: #191717;
   color: #FDE315;
+  /* color: #FDE315; */
+  /* border-top: 1px solid transparent; */
 }
+
+.div-text{
+  transition: transform ease 0.4s;
+  padding: 1rem 0;
+}
+
+.div-text:active{
+  transform: scale(1.5) translateY(-10px);
+}
+
 
 /*
     % * / - + ( Symbols )
 */
 .symbol{
-  background-color: #FD1B47;
-  color: #F4EEEE;
+  background-color: #191717;
+  /* background-color: #1F1D1D; */
+  /* color: #F4EEEE; */
+  color: #FD1B47;
   font-size: 2rem;
 }
 
-.symbol:hover{
-  background-color: #F4EEEE;
-  color: #FD1B47;
-  box-shadow: 0 0 7px #312F2F;
-}
-
-.btn-18{
+.btn-19{
   border-bottom-right-radius: 20px;
-  background-color: #05CE6A;
+  /* color: #05CE6A; */
+  /* background-color: #05CE6A; */
 }
-.btn-18:hover{
+/* .btn-18:hover{
   background-color: #F4EEEE;
   color: #05CE6A;
-}
+} */
 
 .btn-16{
   border-bottom-left-radius: 20px;
 }
 
-.btn-16{
-  grid-column: 1/3;
+
+.btn-4, .btn-5, .btn-6, .btn-8, .btn-9, .btn-10,
+.btn-12, .btn-13, .btn-14, .btn-16, .btn-17, .btn-18{
+  background-color: #292626;
+  color: #03E171;
+}
+
+.btn-6{
+  border-top-right-radius: 20px;
 }
 
 .metaAuthor{

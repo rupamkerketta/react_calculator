@@ -8,6 +8,9 @@ class Calculator extends Component{
       display_text: '',
       prev: '',
       symbol_count: 0,
+      num_count: 0,
+      dot_state: false,
+      dot_count: 0,
       symbol_flag: false,
       first_zero_flag: 0
     };
@@ -39,6 +42,8 @@ class Calculator extends Component{
     if(val == 'cls'){
       this.setState({display_text: ''});
       this.setState({prev: ''});
+      this.setState({dot_state: false});
+      this.setState({dot_count: 0});
       this.setState({first_zero_flag: 0});
       console.log('clear');
     }
@@ -56,7 +61,18 @@ class Calculator extends Component{
         this.state.symbol_flag = true;
         symbol = val;
         this.state.symbol_count += 1;
+        this.state.dot_count = 0;
+        this.setState({dot_state: false});
       }
+
+      if(val == '.'){
+        var dot_count = this.state.dot_count;
+        this.setState({dot_state: true});
+        this.state.dot_count = dot_count+1;
+        console.log('dot_count : '+this.state.dot_count);
+      }
+
+
       /* This condition is triggerd when the user clicks any other
        * button other than the symbol ones. It also resets other
        * the symbol count which is being registered in the state variable.
@@ -64,6 +80,7 @@ class Calculator extends Component{
       else{
         this.state.symbol_flag = false;
         this.state.symbol_count = 0;
+        this.state.num_count += 1;
       }
       /* End - Block one of condition checking
        * Mainly involving the registration of symbol_count
@@ -97,9 +114,15 @@ class Calculator extends Component{
         }
         else{
           exp = this.state.display_text;
-          exp += val;
-          this.setState({display_text: exp});
-          console.log(exp+' norm');
+          if(this.state.dot_state == true && this.state.dot_count >= 2){
+            this.setState({display_text: exp});
+            console.log('dot triggered : '+this.state.dot_count);
+          }
+          else{
+            exp += val;
+            this.setState({display_text: exp});
+            console.log(exp+' norm');
+          }
         }
       }
 
@@ -176,14 +199,14 @@ class Buttons extends Component{
   }
 
   render(){
-    const arr = ['cls', 'del', '%', '*', '7', '8', '9', '/', '4', '5', '6', '-', '1', '2', '3', '+',  '0', '.', '='];
+    const arr = ['cls', 'del', '%', '*', '7', '8', '9', '/', '4', '5', '6', '-', '1', '2', '3', '+', '', '0', '.', '='];
     return(
       <div className="Buttons">
         {arr.map((item, key) =>
           <div
-            className={'btn-'+key+' btn'+((key == 2 || key == 3 || key == 7 || key == 11 || key == 15 || key == 18)? ' symbol' : '')}
+            className={'btn-'+key+' btn'+((key == 2 || key == 3 || key == 7 || key == 11 || key == 15 || key == 18 || key == 19)? ' symbol' : '')}
             onClick={this.clicker}>
-            {item}
+            <div className="div-text">{item}</div>
           </div>
         )}
       </div>
