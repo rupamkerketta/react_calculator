@@ -7,6 +7,10 @@
   margin:7vh auto;
 }
 
+.err-msg{
+  font-size: 0.9rem;
+}
+
 .display-output-wrapper{
   background-color: #312F2F;
   font-size: 2.1rem;

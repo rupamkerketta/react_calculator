@@ -9,6 +9,7 @@ class Calculator extends Component{
       prev: '',
       display_text: '',
       symbol_state: false,
+      err_msg: false
     };
     this.updateDisplayText = this.updateDisplayText.bind(this);
     this.isInt = this.isInt.bind(this);
@@ -26,21 +27,36 @@ class Calculator extends Component{
 
     if(val === 'cls'){
       this.cls();
+      this.setState({err_msg: false});
     }
     else if(val === 'del'){
-      this.del();
+      if(this.state.err_msg){
+        this.cls();
+        this.setState({err_msg: false});
+      }
+      else{
+        this.del();
+      }
     }
     else if(val === '%' || val === '*' || val === '/' || val === '-' || val === '+'){
-      this.symbolHandler(val);
+      if(!this.state.err_msg){
+        this.symbolHandler(val);
+      }
     }
     else if(val === '.'){
-      this.dotHandler();
+      if(!this.state.err_msg){
+        this.dotHandler();
+      }
     }
     else if(valInt >= 0 && valInt <= 9){
-      this.numHandler(val);
+      if(!this.state.err_msg){
+        this.numHandler(val);
+      }
     }
     else if(val === '='){
-      this.equalsHandler();
+      if(!this.state.err_msg){
+        this.equalsHandler();
+      }
     }
   }
 
@@ -116,7 +132,9 @@ class Calculator extends Component{
     }
     catch(e){
       if(e instanceof SyntaxError){
-        this.setState({display_text: e.message});
+        this.setState({prev: e.message});
+        this.setState({display_text: 'Click cls to reset'});
+        this.setState({err_msg: true});
       }
     }
   }
@@ -138,7 +156,7 @@ class Calculator extends Component{
   dotBeforeNum(){
     var temp = this.state.display_text.toString();
     var len = temp.length;
-    var break_point;
+    //var break_point;
     var dot_found = false;
     var i = len-1;
 
@@ -162,7 +180,7 @@ class Calculator extends Component{
   render(){
     return(
       <div className="container">
-        <OutputDisplay prev={this.state.prev} display_text={this.state.display_text}/>
+        <OutputDisplay prev={this.state.prev} display_text={this.state.display_text} err_msg={this.state.err_msg}/>
         <Buttons updateDisplayText={this.updateDisplayText} handleKeyPress={this.handleKeyPress}/>
         <MetaAuthor />
       </div>
@@ -174,8 +192,8 @@ class OutputDisplay extends Component{
   render(){
     return(
       <div className="display-output-wrapper">
-        <div className="output-text">{this.props.prev}</div>
-        <div className="output-text">{this.props.display_text}</div>
+        <div className={"output-text"+(this.props.err_msg? ' err-msg' : '')}>{this.props.prev}</div>
+        <div className={"output-text"+(this.props.err_msg? ' err-msg' : '')}>{this.props.display_text}</div>
       </div>
     );
   }
