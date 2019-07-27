@@ -1,4 +1,4 @@
-[Click](https://rupamkerketta.github.io/react_calculator/) here to try it now!
+[Click here](https://rupamkerketta.github.io/react_calculator/) to try it now!
 
 ![alt text](https://raw.githubusercontent.com/rupamkerketta/react_calculator/master/src/demo-pic.png)
 
